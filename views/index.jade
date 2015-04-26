@@ -1,5 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .top-thing
+    .container
+      .row
+        .col-xs-6.text-right
+          img.userpic
+        .col-xs-6.text-left
+          h1 Hello,<br>I'm Tim.
+
+  .container
+    .row
+      .col-xs-12.col-md-8.col-md-offset-2
+        p.lead
+          | You've stumbled upon an experimental site that I've put up using 
+          a(href="https://console.ng.bluemix.net/home/") IBM's Bluemix platform
+          | .  You won't find much content, though there may be some tech demos here and there.
