@@ -1,9 +1,17 @@
 {
-  "name": "tcgarvin-com",
+  "name": "tcgarvin.com",
   "version": "0.0.1",
   "ignore": [
     "**/.*",
     "node_modules",
-    "components"
-  ]
+    "components",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ],
+  "homepage": "https://github.com/tcgarvin/tcgarvin.com",
+  "dependencies": {
+    "bootstrap-stylus": "~4.0.3"
+  }
 }
