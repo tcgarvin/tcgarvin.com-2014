@@ -12,6 +12,7 @@
   ],
   "homepage": "https://github.com/tcgarvin/tcgarvin.com",
   "dependencies": {
-    "bootstrap-stylus": "~4.0.3"
+    "bootstrap-stylus": "~4.0.3",
+    "josh": "~0.2.10"
   }
 }
