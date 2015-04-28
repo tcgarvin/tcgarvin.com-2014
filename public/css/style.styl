@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
+@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro);
 
 // Set variables that bootstrap will use
 $gray-base ?= #7D8C93
@@ -6,10 +7,29 @@ $gray-base ?= #7D8C93
 $body-bg ?= #1E1E23
 
 $font-family-sans-serif ?= "Montserrat", "Helvetical Neue", Helvetica, Arial, sans-serif
+$font-family-monospace ?= "Source Code Pro", Menlo, Monaco, Consolas, "Courier New", monospace
 $font-size-base ?= 16px
 
 @require '../components/bootstrap-stylus/bootstrap/index.styl'
 @require '../components/bootstrap-stylus/bootstrap/theme.styl'
+
+// Set variables we will use
+$font-size-monospace 18px
+
+
+.shell
+  font-family $font-family-monospace
+  font-size $font-size-monospace
+  padding 1em
+  color white
+  height 2em + $line-height-base
+  background-color black
+  opacity 0.7
+  overflow hidden
+
+#shell-panel
+  height 100%
+  overflow-y hidden
 
 .top-thing 
   margin-top 50px

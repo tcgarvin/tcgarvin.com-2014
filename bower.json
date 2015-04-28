@@ -13,6 +13,8 @@
   "homepage": "https://github.com/tcgarvin/tcgarvin.com",
   "dependencies": {
     "bootstrap-stylus": "~4.0.3",
-    "josh": "~0.2.10"
+    "josh": "~0.2.10",
+    "jquery": "~2.1.3",
+    "underscore": "~1.8.3"
   }
 }
