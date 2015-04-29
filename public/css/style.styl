@@ -1,5 +1,28 @@
-@import url(http://fonts.googleapis.com/css?family=Montserrat);
-@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro);
+/* montserrat-regular - latin */
+@font-face
+  font-family 'Montserrat'
+  font-style normal
+  font-weight 400
+  src url('../fonts/montserrat-v6-latin-regular.eot') /* IE9 Compat Modes */
+  src local('Montserrat-Regular')
+    url('../fonts/montserrat-v6-latin-regular.eot?#iefix') format('embedded-opentype') /* IE6-IE8 */
+    url('../fonts/montserrat-v6-latin-regular.woff2') format('woff2') /* Super Modern Browsers */
+    url('../fonts/montserrat-v6-latin-regular.woff') format('woff') /* Modern Browsers */
+    url('../fonts/montserrat-v6-latin-regular.ttf') format('truetype') /* Safari, Android, iOS */
+    url('../fonts/montserrat-v6-latin-regular.svg#Montserrat') format('svg') /* Legacy iOS */
+
+/* source-code-pro-regular - latin */
+@font-face
+  font-family: 'Source Code Pro'
+  font-style normal
+  font-weight 400
+  src url('../fonts/source-code-pro-v6-latin-regular.eot') /* IE9 Compat Modes */
+  src local('Source Code Pro')
+    url('../fonts/source-code-pro-v6-latin-regular.eot?#iefix') format('embedded-opentype') /* IE6-IE8 */
+    url('../fonts/source-code-pro-v6-latin-regular.woff2') format('woff2') /* Super Modern Browsers */
+    url('../fonts/source-code-pro-v6-latin-regular.woff') format('woff') /* Modern Browsers */
+    url('../fonts/source-code-pro-v6-latin-regular.ttf') format('truetype') /* Safari, Android, iOS */
+    url('../fonts/source-code-pro-v6-latin-regular.svg#SourceCodePro') format('svg') /* Legacy iOS */
 
 // Set variables that bootstrap will use
 $gray-base ?= #7D8C93
@@ -10,26 +33,43 @@ $font-family-sans-serif ?= "Montserrat", "Helvetical Neue", Helvetica, Arial, sa
 $font-family-monospace ?= "Source Code Pro", Menlo, Monaco, Consolas, "Courier New", monospace
 $font-size-base ?= 16px
 
+// Import bootstrap
 @require '../components/bootstrap-stylus/bootstrap/index.styl'
 @require '../components/bootstrap-stylus/bootstrap/theme.styl'
 
 // Set variables we will use
-$font-size-monospace 18px
+$font-size-monospace = 18px
+$shellbar-height = 2em + $line-height-base
 
+// CSS
+body
+  padding-top $shellbar-height
 
 .shell
+  position absolute
+  top 0
+  left 0
+  right 0
   font-family $font-family-monospace
   font-size $font-size-monospace
   padding 1em
   color white
-  height 2em + $line-height-base
+  height $shellbar-height
   background-color black
-  opacity 0.7
+  opacity 0.9
   overflow hidden
+
+.shell.open
+  height 800px
 
 #shell-panel
   height 100%
   overflow-y hidden
+  position relative
+
+#shell-view
+  position absolute
+  bottom 0
 
 .top-thing 
   margin-top 50px
