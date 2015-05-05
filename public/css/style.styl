@@ -31,7 +31,7 @@ $body-bg ?= #1E1E23
 
 $font-family-sans-serif ?= "Montserrat", "Helvetical Neue", Helvetica, Arial, sans-serif
 $font-family-monospace ?= "Source Code Pro", Menlo, Monaco, Consolas, "Courier New", monospace
-$font-size-base ?= 16px
+$font-size-base ?= 18px
 
 // Import bootstrap
 @require '../components/bootstrap-stylus/bootstrap/index.styl'
@@ -40,10 +40,12 @@ $font-size-base ?= 16px
 // Set variables we will use
 $font-size-monospace = 18px
 $shellbar-height = 2em + $line-height-base
+$page-headline-margin = 50px;
 
 // CSS
 body
   padding-top $shellbar-height
+  line-height 1.6
 
 .shell
   position absolute
@@ -72,5 +74,8 @@ body
   bottom 0
 
 .top-thing 
-  margin-top 50px
-  margin-bottom 50px
+  margin-top $page-headline-margin
+  margin-bottom $page-headline-margin
+
+.under-top-thing 
+  margin-top $page-headline-margin
