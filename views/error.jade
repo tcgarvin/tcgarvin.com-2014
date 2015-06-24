@@ -1,6 +1,13 @@
 extends layout
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+
+  .top-thing
+    .container
+      .row
+        .col-xs-12.col-md-8.col-md-offset-2
+          h1 This is not a real page.
+          p.lead There's a good chance Tim doesn't know anything is wrong. (You should tell him.)
+          p
+            em= error.status + " - " + message
+

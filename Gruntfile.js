@@ -2,6 +2,14 @@
 
 var request = require('request');
 
+var browserifyFiles = [
+  {
+    expand: true,
+    src: ['./js/*.js'],
+    dest: 'public/'
+  }
+];
+
 module.exports = function (grunt) {
   // show elapsed time at the end
   require('time-grunt')(grunt);
@@ -15,6 +23,19 @@ module.exports = function (grunt) {
     develop: {
       server: {
         file: 'bin/www'
+      }
+    },
+    browserify: {
+      dist: {
+        files: browserifyFiles
+      },
+      watch: {
+        files: browserifyFiles,
+        options: {
+          browserifyOptions: {
+            debug: true
+          }
+        }
       }
     },
     stylus: {
@@ -38,7 +59,8 @@ module.exports = function (grunt) {
         tasks: ['develop', 'delayed-livereload']
       },
       js: {
-        files: ['public/js/*.js'],
+        files: ['js/*.js'],
+        tasks: ['browserify:watch'],
         options: {
           livereload: reloadPort
         }
@@ -82,6 +104,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'stylus',
+    'browserify:watch',
     'develop',
     'watch'
   ]);
