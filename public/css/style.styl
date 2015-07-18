@@ -18,6 +18,7 @@ $font-size-monospace = 18px
 $shellbar-height = 2em + $line-height-base
 $page-headline-margin = 50px;
 $highlight = #CB772F
+$comment = #808080
 
 // CSS
 body
@@ -75,3 +76,22 @@ path.content
   fill none
   stroke-width 2.5px
   stroke-linejoin round
+
+// History X Axis
+.history .xaxis .domain
+  fill none
+  stroke-width 1px
+  stroke $comment
+  shape-rendering crispEdges
+
+.history .tick text
+  fill $comment
+  font-size small
+
+.history .yaxis .domain
+  display none
+
+.history .yaxis .tick line
+  stroke $comment
+  stroke-dasharray 2,6
+  shape-rendering crispEdges

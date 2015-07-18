@@ -10,12 +10,14 @@ function BlackjackSimpleHistory() {
   var xScale = d3.scale.linear();
   var xAxis = d3.svg.axis()
     .orient("bottom")
+    .tickFormat(function(tick) { return tick != 0 ? tick : ""; })
     .scale(xScale);
 
   // init X-axis with scale
   var yScale = d3.scale.linear();
   var yAxis = d3.svg.axis()
-    .orient("left")
+    .orient("right") // Picked because of the resulting text-anchor.  Wrong?
+    .tickFormat(function(tick) { return tick != 0 ? tick : ""; })
     .scale(yScale);
 
   // Init Line generator
@@ -26,15 +28,28 @@ function BlackjackSimpleHistory() {
   // The render function proper
   var history = function(selection) {
     // Init axis if not already present
-    selection.selectAll("g.xaxis").data([0])
+    var xAxisSelection = selection.selectAll("g.xaxis").data([0]);
+    xAxisSelection
       .enter()
         .append("svg:g")
         .classed("xaxis", true);
 
-    selection.selectAll("g.yaxis").data([0])
+    xAxisSelection
+        .attr("transform", function() { return "translate(0,"+yScale(0)+")"; })
+        .call(xAxis);
+
+    yAxis.tickSize(width);
+    var yAxisSelection = selection.selectAll("g.yaxis").data([0]);
+    yAxisSelection
       .enter()
         .append("svg:g")
         .classed("yaxis", true);
+
+    yAxisSelection.call(yAxis);
+
+    yAxisSelection.selectAll("g.tick text")
+        .attr("x","1em")
+        .attr("y","-0.72em");
 
     // Init and render paths
     var d3Paths = selection.selectAll("path.content")
@@ -108,7 +123,7 @@ $(function() {
     .height(height)
     .width(width)
     .xDomain([0,numToSimulate])
-    .yDomain([-1000, 1000]);
+    .yDomain([-900, 900]);
 
   // Find/init svg
   var d3Svg = d3.select('svg.blackjack')

@@ -4,4 +4,7 @@ public/js
 .sass-cache
 
 public/css/*.css
-putlic/images
+public/images
+
+.swp
+
