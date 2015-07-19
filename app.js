@@ -10,6 +10,8 @@ var users = require('./routes/user');
 
 var app = express();
 
+var devmode = (app.get('env') === 'development');
+
 // view engine setup
 
 app.set('views', path.join(__dirname, 'views'));
@@ -22,7 +24,8 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'),
+    {maxAge: devmode ? 0 : 86400000}));
 
 app.use('/', routes);
 //app.use('/users', users);
@@ -39,7 +42,7 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 
-if (app.get('env') === 'development') {
+if (devmode) {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {
