@@ -1,6 +1,6 @@
 var bjjs = require('bjjs');
 
-var gamethrottle = 2000 // ms per hand target
+var gamethrottle = 20 // ms per hand target
 
 // A little timeseries-style graph to show how things go.
 function BlackjackSimpleHistory() {
@@ -146,11 +146,11 @@ function BlackjackTable() {
       var handX, handY, handDY;
 
       if (player === "dealer") {
-        handX = (width / 2) - 110;
+        handX = 50;
         handY = 0;
         handDY = 10;
       } else if (player === game.getPlayers()[0]) {
-        handX = (width / 2) - 110;
+        handX = 50;
         handY = height - 310;
         handDY = -10;
       } else {
@@ -230,7 +230,7 @@ $(function() {
   var basic = new bjjs.player(new bjjs.strategy.basic());
   var basic2 = new bjjs.player(new bjjs.strategy.basic());
   game.addPlayer(basic);
-  game.addPlayer(basic2);
+  //game.addPlayer(basic2);
   
   // We're going to keep history in a simple little object.  Someday it might
   // be formalized.
@@ -241,11 +241,11 @@ $(function() {
   // Init visualization logic
   var tableVis = BlackjackTable()
     .height(height)
-    .width(width);
+    .width(width / 3);
 
   var histVis = BlackjackSimpleHistory()
     .height(height)
-    .width(width)
+    .width(width * 2 / 3)
     .xDomain([0,numToSimulate])
     .yDomain([-900, 900]);
 
@@ -261,11 +261,12 @@ $(function() {
     .classed('cardtable', true)
     .call(tableVis);
 
-//  var d3Hist = d3Svg.selectAll('g.history').data([game.getPlayers()]);
-//  d3Hist.enter()
-//    .append('svg:g')
-//    .classed('history', true)
-//    .call(histVis);
+  var d3Hist = d3Svg.selectAll('g.history').data([game.getPlayers()]);
+  d3Hist.enter()
+    .append('svg:g')
+    .classed('history', true)
+    .attr("transform", "translate(" + (width / 3) + ",0)")
+    .call(histVis);
 
   // A design decision here.  Since we're not doing web workers, we need to
   // keep the simulation throttled.  We'll do that by setting a little timer
@@ -278,8 +279,7 @@ $(function() {
     players.forEach(function(player) {
       player.history.push(player.getBalance());
     });
-    //d3Hist.call(histVis);
-    //d3CardTable.call(tableVis);
+    d3Hist.call(histVis);
 
     if (runCount < numToSimulate) {
       window.setTimeout(simulate, gamethrottle);
