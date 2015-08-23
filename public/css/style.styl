@@ -1,9 +1,21 @@
 @import url("http://fonts.googleapis.com/css?family=Source+Code+Pro|Montserrat");
 
+// Set variables we will use
+$font-size-monospace = 18px
+$page-headline-margin = 50px;
+$highlight = #CB772F // Orange
+$warning = #D25252 // Red
+$comment = #808080 // Darker grey
+$javadoc = #619647 // Green
+$string = #A5C25C // Light green
+
 // Set variables that bootstrap will use
 $gray-base ?= #7D8C93
 
 $body-bg ?= #1E1E23
+
+$modal-content-bg ?= $body-bg
+$modal-header-border-color ?= $body-bg + 10%
 
 $font-family-sans-serif ?= "Montserrat", "Helvetical Neue", Helvetica, Arial, sans-serif
 $font-family-monospace ?= "Source Code Pro", Menlo, Monaco, Consolas, "Courier New", monospace
@@ -11,19 +23,27 @@ $font-size-base ?= 18px
 
 // Import bootstrap
 @require '../components/bootstrap-stylus/bootstrap/index.styl'
-@require '../components/bootstrap-stylus/bootstrap/theme.styl'
-
-// Set variables we will use
-$font-size-monospace = 18px
-$shellbar-height = 2em + $line-height-base
-$page-headline-margin = 50px;
-$highlight = #CB772F
-$comment = #808080
+//@require '../components/bootstrap-stylus/bootstrap/theme.styl'
 
 // CSS
 body
   padding-top $shellbar-height
   line-height 1.6
+
+.warning
+  color: $warning
+
+button
+  font-family "Source Code Pro"
+
+.btn-primary
+  background-color transparent
+  color $string
+  border-color $string
+  border-radius 10px
+
+
+$shellbar-height = 2em + $line-height-base
 
 .shell
   position absolute

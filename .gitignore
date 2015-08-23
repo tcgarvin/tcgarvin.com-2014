@@ -6,5 +6,5 @@ public/js
 public/css/*.css
 public/images
 
-.swp
+*.swp
 

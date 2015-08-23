@@ -268,7 +268,7 @@ $(function() {
     .attr("transform", "translate(" + (width / 3) + ",0)")
     .call(histVis);
 
-  // A design decision here.  Since we're not doing web workers, we need to
+  // A decision here.  Since we're not doing web workers, we need to
   // keep the simulation throttled.  We'll do that by setting a little timer
   // between runs.  This gives the UI a chance to keep up in real time.
   var runCount = 0;
@@ -285,6 +285,12 @@ $(function() {
       window.setTimeout(simulate, gamethrottle);
     }
   }
-  window.setTimeout(simulate, gamethrottle);
+
+  $('.modal').modal({backdrop:"static"});
+  //$('.modal').modal("show");
+  $('button.runSpike').on("click", function() {
+    $('.modal').modal("hide");
+    window.setTimeout(simulate, gamethrottle);
+  });
   
 });
