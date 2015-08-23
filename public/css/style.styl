@@ -39,11 +39,15 @@ body
 button
   font-family "Source Code Pro"
 
-.btn-primary
-  background-color transparent
+.btn-primary, .btn-primary:hover
   color $string
   border-color $string
   border-radius 10px
+  background-color transparent
+
+.btn-primary:hover
+  box-shadow 0px 0px 0px 1px @border-color
+
 
 .shell
   position absolute
