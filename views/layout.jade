@@ -20,9 +20,7 @@ html(lang='en')
       script(src='http://localhost:35729/livereload.js')
       script(src='/js/layout.js')
   body
+    .body-header
+      unless homepage
+        a(href="/") tcgarvin.com
     block content
-
-    .shell
-      #shell-panel
-        #shell-view
-

@@ -1,0 +1,61 @@
+extends layout
+
+mixin showcase(title, imgUrl, link)
+  .col-xs-12.col-md-6
+    .showcase
+      if link
+        a.header.clearfix(href=link, target="_blank")
+          img(src=imgUrl)
+          div.header-text= title + " "
+            unless link[0] === "/"
+              span.small.glyphicon.glyphicon-new-window
+
+      else
+        div.header.clearfix
+          img(src=imgUrl)
+          div.header-text= title + " "
+            span.small (No Link)
+        
+      if block
+        block
+
+block content
+
+  .container
+    .row
+      .col-xs-12
+        h2 Things I've Done
+        p Time's flown since 2012, but I've gotten to do a few things.  You can browse some of them here if you want. Most of them are, regrettably, closed-source, but I've linked to Github when possible.
+
+  .top-thing
+    .container
+      .row
+        +showcase("Protectus Sentry", "/images/protectus-thumbnail.png",
+                  "https://protectus.com")
+          p Built this product with my dad.  I was did the (Python) web app, he did everything else, and we met in the middle, in MongoDB.
+
+        +showcase("UrbanCode Deploy", "/images/ucd-thumbnail.png",
+                  "https://developer.ibm.com/urbancode/")
+          p My friend Matt pulled me onto this team a year or two after their acquisition by IBM.  I get to do everything from subsystem rewrites to on-site customer troubleshooting sessions to UX design.
+
+        +showcase("Dots", "/images/ucd-thumbnail.png")
+          p The UCD teams have a lot of incoming work at any given time.  This tools helps me keep track of it all. Most of the support team uses it now, which is cool.
+
+        +showcase("APAR Wizard", "/images/ucd-thumbnail.png")
+          p At IBM, there are dozens of systems or record.  I wrote a chrome extension to tie together a few of them. Some people use this one now too, which is also cool.
+
+        +showcase("Flag Animation", "/images/hoc-thumbnail.png",
+                  "http://bl.ocks.org/tcgarvin/6174df7cbdf860d22955")
+          p I got a little excited about House of Cards a few years ago and spent the day getting a d3-based flag animation just right.
+
+        +showcase("Blackjack Simulation", "/images/blackjack-thumbnail.png",
+                  "/blackjack")
+          p Every year or so I get into a blackjack rut. One year I scratched the itch by spiking out a blackjack simulation.
+
+        +showcase("Wedding Website", "/images/github-thumbnail.png",
+                  "https://github.com/tcgarvin/ashleyandtim.us")
+          p Like all good programers, I made my own wedding site.  (It's not up anymore, of course)
+
+        +showcase("Hashnav", "/images/github-thumbnail.png",
+                  "https://github.com/tcgarvin/hashnav")
+          p Really old side project generating a force-directed layout between related hashtags.  Figured out which hashtags were related by using the free Twitter 1% firehose. Wish I'd kept screenshots!

@@ -19,6 +19,8 @@ $font-family-sans-serif ?= "Montserrat", "Helvetical Neue", Helvetica, Arial, sa
 $font-family-monospace ?= "Source Code Pro", Menlo, Monaco, Consolas, "Courier New", monospace
 $font-size-base ?= 18px
 
+$icon-font-path = "/components/bootstrap-stylus/fonts/"
+
 // Import bootstrap
 @require '../components/bootstrap-stylus/bootstrap/index.styl'
 //@require '../components/bootstrap-stylus/bootstrap/theme.styl'
@@ -30,8 +32,12 @@ $shellbar-height = 2em + $line-height-base
 
 // CSS
 body
-  padding-top $shellbar-height
   line-height 1.6
+
+.body-header
+  padding 1em
+  border none
+  
 
 .warning
   color: $warning
@@ -49,7 +55,36 @@ button.btn
 .btn-primary:hover
   box-shadow 0px 0px 0px 1px @border-color
 
+// Showcase
 
+$showcase-header-height = 50px
+
+.showcase
+  margin-bottom 50px;
+
+.showcase .header
+  height $showcase-header-height
+
+.showcase .header > img
+  height $showcase-header-height
+  width $showcase-header-height
+  margin-right 1em
+  float left
+
+.showcase .header > .header-text
+  line-height $showcase-header-height
+  font-size 23px
+  margin 0
+  float left
+
+.showcase .header > .header-text > span.small
+  font-size 50%
+
+.showcase > p
+  margin-top 5px
+
+
+// Abandoned shell experiment
 .shell
   position absolute
   top 0
